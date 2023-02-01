@@ -1,3 +1,5 @@
+// An example of a button as a React component. When it is pressed, the text will change to 'You have successfully logged in.'.
+
 'use strict';
 
 const e = React.createElement;
