@@ -1,0 +1,49 @@
+
+
+<h1>Title</h1>
+<div id="root"> </div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+
+<strong>Email: </strong><input id="email_input" />
+<br />
+<strong>Password: </strong><input id="password_input"/>
+
+
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossorigin></script>
+
+<div id="login_button_container"></div>
+
+<!-- <script src="login_button.js"> </script> -->
+
+<script type="text/babel">
+
+    function formatName (user)
+    {
+        return `${user.firstName} ${user.lastName}`;
+    }
+
+    function getGreeting (user)
+    {
+        if (user && user.firstName != null && user.firstName != undefined && user.lastName != null && user.lastName != undefined) 
+        {
+            return <h1>Hello, {formatName(user)}!</h1>;   
+        } 
+        else 
+        {
+            return <h1>Hello, Stranger!</h1>;   
+        }
+    }
+
+    const user = {
+        firstName: "Frank",
+        lastName: "Stewarts"
+    };
+
+    const domContainer = document.querySelector('#root');
+    const root = ReactDOM.createRoot(domContainer);
+    const _name = "Bob";
+    root.render(getGreeting(user));
+ </script>
