@@ -1,6 +1,4 @@
-﻿using System.Data.Entity;
-
-namespace EntityAPI.Models
+﻿namespace EntityAPI.Models
 {
     public class Experience
     {
@@ -10,9 +8,4 @@ namespace EntityAPI.Models
         public Feedback? Feedback { get; set; }
         public string? UploadedBy { get; set; }
     }
-
-    //public class ExperienceContext : DbContext
-    //{
-    //    public DbSet<Experience> Experiences { get; set; }
-    //}
 }

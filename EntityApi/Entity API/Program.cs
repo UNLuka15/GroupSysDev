@@ -1,48 +1,16 @@
-﻿using EntityAPI.Models;
-using EntityAPI.Repositories;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-// TODO: Insert Data  DONE
-//       Read Data    DONE
-//       Delete Data  DONE
-//       Create API
-//       Tests
+// Still need to add the following models:
+// - Account
+// - Reports
+// - Logins
+// - Possibly Review and Rating tables? (May not need to due to the flexible feedback table.)
 
-//Console.WriteLine("Loading Context...");
-//var exhibitRepository = new ExhibitRepository();
-
-
-//// Adding 
-//var newExhibit = new Exhibit()
-//{
-//    Id = 1,
-//    Name = "Healthcare",
-//    Description = "An exhibit showing our recent medical advances.",
-//    Museum = new Museum(),
-//    OpeningTime = DateTime.Now,
-//    ClosingTime = DateTime.Now,
-//};
-
-//exhibitRepository.AddNew(newExhibit);
-//// 
-
-//// Removing
-//var idToRemove = 1;
-//exhibitRepository.RemoveById(idToRemove);
-//// 
-
-// Reading
-//var exhibits = exhibitRepository.GetAll();
-
-//foreach (var exhibit in exhibits)
-//    exhibit.LogProperties();
-// 
-//Console.WriteLine("Program complete.");
+// Could try and make a more standard repository. Could it accept a DbSet<T> instead of calling properties directly?
 
 
-//// API Configuration
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 

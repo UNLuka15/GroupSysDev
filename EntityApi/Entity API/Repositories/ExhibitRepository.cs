@@ -1,5 +1,4 @@
 ﻿using EntityAPI.Models;
-using System.Linq;
 
 namespace EntityAPI.Repositories
 {
@@ -22,19 +21,25 @@ namespace EntityAPI.Repositories
             }
         }
 
-        public List<Exhibit> GetAll()
+        public List<Exhibit>? GetAll()
         {
             using (var context = new Context())
             {
-                return context.Exhibits != null ? context.Exhibits.ToList() : new List<Exhibit>();
+                if (context.Exhibits != null) 
+                    return context.Exhibits.ToList();
+
+                return null;
             }
         }
 
-        public Exhibit GetById(int id)
+        public Exhibit? GetById(int id)
         {
             using (var context = new Context())
             {
-                return context.Exhibits?.SingleOrDefault(e => e.Id == id) ?? new Exhibit();
+                if (context.Exhibits != null) 
+                    return context.Exhibits.SingleOrDefault(e => e.Id == id);
+
+                return null;
             }
         }
 

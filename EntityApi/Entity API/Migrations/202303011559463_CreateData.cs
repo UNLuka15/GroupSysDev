@@ -14,6 +14,8 @@
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         Description = c.String(),
+                        OpeningTime = c.DateTime(),
+                        ClosingTime = c.DateTime(),
                         Museum_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)

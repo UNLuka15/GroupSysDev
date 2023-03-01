@@ -1,6 +1,4 @@
-﻿using System.Data.Entity;
-
-namespace EntityAPI.Models
+﻿namespace EntityAPI.Models
 {
     public class Feedback
     {
@@ -8,9 +6,4 @@ namespace EntityAPI.Models
         public FeedbackType Type {get; set;}
         public List<FeedbackLine>? Lines { get; set; }
     }
-
-    //public class FeedbackContext : DbContext
-    //{
-    //    public DbSet<Feedback> FeedbackSet { get; set; }
-    //}
 }

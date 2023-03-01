@@ -2,9 +2,9 @@
 {
     public interface IRepository<T>
     {
-        List<T> GetAll();
+        List<T>? GetAll();
 
-        T GetById(int id);
+        T? GetById(int id);
 
         bool RemoveById(int id);
 

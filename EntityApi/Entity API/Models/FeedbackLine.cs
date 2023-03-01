@@ -1,6 +1,4 @@
-﻿using System.Data.Entity;
-
-namespace EntityAPI.Models 
+﻿namespace EntityAPI.Models 
 {
     public class FeedbackLine
     {
@@ -11,9 +9,4 @@ namespace EntityAPI.Models
         // Don't know if we need this, we may be able to determine this from the feedback type that's passed in.
         public string? DataType { get; set; } 
     }
-
-    //public class FeedbackLineContext : DbContext
-    //{
-    //    public DbSet<FeedbackLine> FeedbackLines { get; set; }
-    //}
 }

@@ -9,8 +9,8 @@ namespace EntityAPI.Models
         public string? Name { get; set; }
         public string? Description { get; set; }
         // TimeOnly isn't supported yet in .NET 6
-        public DateTime OpeningTime { get; set; }
-        public DateTime ClosingTime { get; set; }
+        public DateTime? OpeningTime { get; set; }
+        public DateTime? ClosingTime { get; set; }
     }
 
     //public class ExhibitContext : DbContext 

@@ -1,6 +1,4 @@
-﻿using System.Data.Entity;
-
-namespace EntityAPI.Models
+﻿namespace EntityAPI.Models
 {
     public class Museum
     {
@@ -9,9 +7,4 @@ namespace EntityAPI.Models
         public string? Description { get; set; }
         public string? Code { get; set; }
     }
-
-    //public class MuseumContext : DbContext
-    //{
-    //    public DbSet<Museum> Museums { get; set; }
-    //}
 }
