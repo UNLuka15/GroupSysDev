@@ -21,6 +21,29 @@ namespace EntityAPI.Repositories
             }
         }
 
+        public List<Exhibit>? GetByMuseumCode(string museumCode) 
+        {
+            using (var context = new Context())
+            {
+                if (context.Exhibits != null)
+                    return context.Exhibits.Where(ex => ex.Museum.Code == museumCode).ToList();
+
+                return null;
+            }
+        }
+
+        public Exhibit? GetByReference(string reference, string museumCode) 
+        {
+            using (var context = new Context())
+            {
+                if (context.Exhibits != null)
+                    return context.Exhibits.SingleOrDefault(ex => ex.Reference == reference &&
+                                                            ex.Museum.Code == museumCode);
+
+                return null;
+            }
+        }
+
         public List<Exhibit>? GetAll()
         {
             using (var context = new Context())

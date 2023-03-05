@@ -1,13 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EntityAPI.Repositories;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EntityAPI.Controllers
 {
-    public class FeedbackController
+    [ApiController]
+    [Route("[controller]")]
+    public class FeedbackController : ControllerBase
     {
+        [HttpGet("All")]
+        public IActionResult GetFeedbackList()
+        {
+            var feedbackList = new FeedbackRepository().GetAll();
+            return feedbackList != null ? Ok(feedbackList) : NoContent();
+        }
+
         // Include feedback and feedback line.
     }
 }

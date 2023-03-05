@@ -36,11 +36,26 @@ namespace EntityAPI.Controllers
         public IActionResult AddExhibit([FromBody]ExhibitRequestModel exhibitRequest)
         {
             // TODO: Move the request translation logic to another class. It isn't the controller's responsibility.
+            // Split up the translation into multiple smaller methods.
             var newExhibit = new Exhibit();
+            var exhibitRepository = new ExhibitRepository();
 
             newExhibit.Name = exhibitRequest.Name;
             newExhibit.Museum = null;
             newExhibit.Description = exhibitRequest.Description;
+
+            var museumExhibits = exhibitRepository.GetByMuseumCode(exhibitRequest.MuseumCode);
+
+            if (museumExhibits == null || museumExhibits.Any(e => e.Reference == exhibitRequest.Reference))
+                return BadRequest($"There is already an exhibit with the reference '{exhibitRequest.Reference}'.");
+             
+            newExhibit.Reference = exhibitRequest.Reference;
+
+            var existingMuseum = new MuseumRepository().GetByCode(exhibitRequest.MuseumCode);
+            if (existingMuseum == null)
+                return BadRequest($"Cannot find museum with code '{exhibitRequest.MuseumCode}'.");
+
+            newExhibit.Museum = existingMuseum;
 
             DateTime parsedDate;
             if (exhibitRequest.OpeningTime != null) 

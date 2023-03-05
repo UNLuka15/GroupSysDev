@@ -10,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 
 // Could try and make a more standard repository. Could it accept a DbSet<T> instead of calling properties directly?
 // Need to add more interfaces in case we were to switch to another database integration at some point in the future.
+// Need to look into the [Key] attribute and .Include method for entity framework. This may help solve the null objects on returned experiences issue.
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();

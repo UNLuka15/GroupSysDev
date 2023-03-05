@@ -41,6 +41,17 @@ namespace EntityAPI.Repositories
             }
         }
 
+        public Museum? GetByCode(string code)
+        {
+            using (var context = new Context())
+            {
+                if (context.Museums != null)
+                    return context.Museums.SingleOrDefault(e => e.Code == code);
+
+                return null;
+            }
+        }
+
         public bool RemoveById(int id)
         {
             using (var context = new Context())

@@ -8,5 +8,4 @@
         Survey,
         Other
     }
-
 }
