@@ -2,15 +2,15 @@
 
 namespace EntityAPI.Repositories
 {
-    public class ExperienceRepository : IRepository<Experience>
+    public class MuseumRepository : IRepository<Museum>
     {
-        public bool AddNew(Experience newExperience)
+        public bool AddNew(Museum newMuseum)
         {
             using (var context = new Context())
             {
-                if (context.Experiences != null)
+                if (context.Museums != null)
                 {
-                    context.Experiences?.Add(newExperience);
+                    context.Museums?.Add(newMuseum);
                     context.SaveChanges();
                     return true;
                 }
@@ -19,23 +19,23 @@ namespace EntityAPI.Repositories
             }
         }
 
-        public List<Experience>? GetAll()
+        public List<Museum>? GetAll()
         {
             using (var context = new Context())
             {
-                if (context.Experiences != null)
-                    return context.Experiences.ToList();
+                if (context.Museums != null)
+                    return context.Museums.ToList();
 
                 return null;
             }
         }
 
-        public Experience? GetById(int id)
+        public Museum? GetById(int id)
         {
             using (var context = new Context())
             {
-                if (context.Experiences != null)
-                    return context.Experiences.SingleOrDefault(e => e.Id == id);
+                if (context.Museums != null)
+                    return context.Museums.SingleOrDefault(e => e.Id == id);
 
                 return null;
             }
@@ -45,14 +45,14 @@ namespace EntityAPI.Repositories
         {
             using (var context = new Context())
             {
-                if (context.Experiences == null)
+                if (context.Museums == null)
                     return false;
 
-                var objectToRemove = context.Experiences?.SingleOrDefault(e => e.Id == id);
+                var objectToRemove = context.Museums?.SingleOrDefault(e => e.Id == id);
 
                 if (objectToRemove != default)
                 {
-                    context.Experiences?.Remove(objectToRemove);
+                    context.Museums?.Remove(objectToRemove);
                     context.SaveChanges();
 
                     return true;
