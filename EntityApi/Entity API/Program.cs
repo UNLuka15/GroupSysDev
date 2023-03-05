@@ -9,7 +9,7 @@ using Microsoft.Extensions.Hosting;
 // - Possibly Review and Rating tables? (May not need to due to the flexible feedback table.)
 
 // Could try and make a more standard repository. Could it accept a DbSet<T> instead of calling properties directly?
-
+// Need to add more interfaces in case we were to switch to another database integration at some point in the future.
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
