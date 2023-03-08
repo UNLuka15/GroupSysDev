@@ -10,6 +10,7 @@ namespace EntityAPI.Repositories
             {
                 if (context.Experiences != null)
                 {
+                    context.Exhibits.Attach(newExperience.Exhibit);
                     context.Experiences?.Add(newExperience);
                     context.SaveChanges();
                     return true;
@@ -24,7 +25,9 @@ namespace EntityAPI.Repositories
             using (var context = new Context())
             {
                 if (context.Experiences != null)
-                    return context.Experiences.ToList();
+                    return context.Experiences.Include("Exhibit.Museum")
+                                              .Include("Feedback.Lines")
+                                              .ToList();
 
                 return null;
             }
@@ -35,7 +38,9 @@ namespace EntityAPI.Repositories
             using (var context = new Context())
             {
                 if (context.Experiences != null)
-                    return context.Experiences.SingleOrDefault(e => e.Id == id);
+                    return context.Experiences.Include("Exhibit.Museum")
+                                              .Include("Feedback.Lines")
+                                              .SingleOrDefault(e => e.Id == id);
 
                 return null;
             }
