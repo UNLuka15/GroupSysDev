@@ -1,6 +1,4 @@
-﻿using EntityAPI.Enums;
-
-namespace EntityAPI.Models
+﻿namespace EntityAPI.Models
 {
     public class Account
     {
