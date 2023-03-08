@@ -11,5 +11,11 @@ namespace EntityAPI.Models
         public DbSet<Feedback>? FeedbackSet { get; set; }
         public DbSet<FeedbackLine>? FeedbackLines { get; set; }
         public DbSet<Museum>? Museums { get; set; }
+        public DbSet<Review>? Reviews { get; set; }
+        public DbSet<Account>? Accounts { get; set; }
+        public DbSet<AccountRequest>? AccountRequests { get; set; }
+        public DbSet<Login>? Logins { get; set; }
+        public DbSet<Report>? Reports { get; set; }
+        public DbSet<EmailReport>? EmailReports { get; set; }
     }
 }

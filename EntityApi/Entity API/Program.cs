@@ -6,10 +6,12 @@ using Microsoft.Extensions.Hosting;
 // - Account
 // - Reports
 // - Logins
-// - Possibly Review and Rating tables? (May not need to due to the flexible feedback table.)
+// - Review Table
+// - Email Reports
 
 // Could try and make a more standard repository. Could it accept a DbSet<T> instead of calling properties directly?
 // Need to add more interfaces in case we were to switch to another database integration at some point in the future.
+// Get Enums to show as their values instead of indices
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
