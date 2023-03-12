@@ -15,5 +15,8 @@ namespace EntityAPI
         public static IQueryable<Experience> BuildExperience(this IQueryable<Experience> experienceContext) 
             => experienceContext.Include("Exhibit.Museum")
                                 .Include("Feedback.Lines");
+
+        public static IQueryable<Review> BuildReview(this IQueryable<Review> reviewContext)
+            => reviewContext.Include("Content.Lines");
     }
 }
