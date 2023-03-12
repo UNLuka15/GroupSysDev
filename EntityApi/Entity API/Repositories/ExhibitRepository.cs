@@ -12,6 +12,7 @@ namespace EntityAPI.Repositories
             {
                 if (context.Exhibits != null)
                 {
+                    context.Museums?.Attach(newExhibit.Museum);
                     context.Exhibits?.Add(newExhibit);
                     context.SaveChanges();
                     return true;
@@ -26,7 +27,7 @@ namespace EntityAPI.Repositories
             using (var context = new Context())
             {
                 if (context.Exhibits != null)
-                    return context.Exhibits.Include("Museum").Where(ex => ex.Museum.Code == museumCode).ToList();
+                    return context.Exhibits.BuildExhibit().Where(ex => ex.Museum.Code == museumCode).ToList();
 
                 return null;
             }
@@ -37,7 +38,7 @@ namespace EntityAPI.Repositories
             using (var context = new Context())
             {
                 if (context.Exhibits != null)
-                    return context.Exhibits.Include("Museum").SingleOrDefault(ex => ex.Reference == reference &&
+                    return context.Exhibits.BuildExhibit().SingleOrDefault(ex => ex.Reference == reference &&
                                                             ex.Museum.Code == museumCode);
 
                 return null;
@@ -49,7 +50,7 @@ namespace EntityAPI.Repositories
             using (var context = new Context())
             {
                 if (context.Exhibits != null) 
-                    return context.Exhibits.Include("Museum").ToList();
+                    return context.Exhibits.BuildExhibit().ToList();
 
                 return null;
             }
@@ -60,7 +61,7 @@ namespace EntityAPI.Repositories
             using (var context = new Context())
             {
                 if (context.Exhibits != null) 
-                    return context.Exhibits.Include("Museum").SingleOrDefault(e => e.Id == id);
+                    return context.Exhibits.BuildExhibit().SingleOrDefault(e => e.Id == id);
 
                 return null;
             }

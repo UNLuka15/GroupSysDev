@@ -3,9 +3,9 @@ using EntityAPI.Repositories;
 
 namespace EntityAPI.Factories
 {
-    public class ExperienceFactory
+    public class ExperienceFactory : IModelFactory<Experience, ExperienceRequestModel>
     {
-        public static Experience Create(ExperienceRequestModel experienceRequest)
+        public Experience Create(ExperienceRequestModel experienceRequest)
         {
             var newExperience = new Experience();
 

@@ -24,7 +24,7 @@ namespace EntityAPI.Repositories
             using (var context = new Context())
             {
                 if (context.Museums != null)
-                    return context.Museums.ToList();
+                    return context.Museums.BuildMuseum().ToList();
 
                 return null;
             }

@@ -35,7 +35,7 @@ namespace EntityAPI.Controllers
         {
             try
             {
-                var newExperience = ExperienceFactory.Create(experienceRequest);
+                var newExperience = new ExperienceFactory().Create(experienceRequest);
                 new ExperienceRepository().AddNew(newExperience);
 
                 return Ok($"'New experience created for exhibit '{experienceRequest.ExhibitReference}'.");

@@ -17,5 +17,13 @@ namespace EntityAPI.Models
         public DbSet<Login>? Logins { get; set; }
         public DbSet<Report>? Reports { get; set; }
         public DbSet<EmailReport>? EmailReports { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Exhibit>()
+                        .HasOptional(e => e.Museum)
+                        .WithMany(m => m.Exhibits)
+                        .WillCascadeOnDelete();
+        }
     }
 }

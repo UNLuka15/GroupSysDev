@@ -25,8 +25,7 @@ namespace EntityAPI.Repositories
             using (var context = new Context())
             {
                 if (context.Experiences != null)
-                    return context.Experiences.Include("Exhibit.Museum")
-                                              .Include("Feedback.Lines")
+                    return context.Experiences.BuildExperience()
                                               .ToList();
 
                 return null;
@@ -38,8 +37,7 @@ namespace EntityAPI.Repositories
             using (var context = new Context())
             {
                 if (context.Experiences != null)
-                    return context.Experiences.Include("Exhibit.Museum")
-                                              .Include("Feedback.Lines")
+                    return context.Experiences.BuildExperience()
                                               .SingleOrDefault(e => e.Id == id);
 
                 return null;
