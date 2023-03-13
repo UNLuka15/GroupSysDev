@@ -4,7 +4,7 @@ namespace EntityAPI.Repositories
 {
     public class ExhibitRepository : IRepository<Exhibit>
     {
-        public bool AddNew(Exhibit newExhibit)
+        public int? AddNew(Exhibit newExhibit)
         {
             //TODO: Validate object, return false if invalid. Add error handling.
 
@@ -15,10 +15,10 @@ namespace EntityAPI.Repositories
                     context.Museums?.Attach(newExhibit.Museum);
                     context.Exhibits?.Add(newExhibit);
                     context.SaveChanges();
-                    return true;
+                    return newExhibit.Id;
                 }
                 else 
-                    return false;
+                    return null;
             }
         }
 

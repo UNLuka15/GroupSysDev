@@ -4,7 +4,7 @@ namespace EntityAPI.Repositories
 {
     public class ReviewRepository : IRepository<Review>
     {
-        public bool AddNew(Review newReview)
+        public int? AddNew(Review newReview)
         {
             using (var context = new Context())
             {
@@ -12,10 +12,10 @@ namespace EntityAPI.Repositories
                 {
                     context.Reviews?.Add(newReview);
                     context.SaveChanges();
-                    return true;
+                    return newReview.Id;
                 }
                 else
-                    return false;
+                    return null;
             }
         }
 

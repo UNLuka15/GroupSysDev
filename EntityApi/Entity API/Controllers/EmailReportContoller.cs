@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EntityAPI.Controllers
 {
-    internal class EmailReportContoller
+    public class EmailReportContoller
     {
         // EmailReport
     }

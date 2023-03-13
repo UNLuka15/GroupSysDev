@@ -4,7 +4,7 @@ namespace EntityAPI.Repositories
 {
     public class MuseumRepository : IRepository<Museum>
     {
-        public bool AddNew(Museum newMuseum)
+        public int? AddNew(Museum newMuseum)
         {
             using (var context = new Context())
             {
@@ -12,10 +12,10 @@ namespace EntityAPI.Repositories
                 {
                     context.Museums?.Add(newMuseum);
                     context.SaveChanges();
-                    return true;
+                    return newMuseum.Id;
                 }
                 else
-                    return false;
+                    return null;
             }
         }
 

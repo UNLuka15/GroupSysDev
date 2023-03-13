@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityAPI.Controllers
+namespace EntityAPI.Factories
 {
-    public class ReportController
+    internal class EmailReportFactory
     {
-        // Report
     }
 }

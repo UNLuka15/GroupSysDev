@@ -4,7 +4,7 @@ namespace EntityAPI.Repositories
 {
     public class ExperienceRepository : IRepository<Experience>
     {
-        public bool AddNew(Experience newExperience)
+        public int? AddNew(Experience newExperience)
         {
             using (var context = new Context())
             {
@@ -13,10 +13,10 @@ namespace EntityAPI.Repositories
                     context.Exhibits.Attach(newExperience.Exhibit);
                     context.Experiences?.Add(newExperience);
                     context.SaveChanges();
-                    return true;
+                    return newExperience.Id;
                 }
                 else
-                    return false;
+                    return null;
             }
         }
 

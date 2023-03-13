@@ -8,6 +8,6 @@
 
         bool RemoveById(int id);
 
-        bool AddNew(T newObject);
+        int? AddNew(T newObject);
     }
 }
