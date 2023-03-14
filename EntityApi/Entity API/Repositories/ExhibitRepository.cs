@@ -12,7 +12,9 @@ namespace EntityAPI.Repositories
             {
                 if (context.Exhibits != null)
                 {
-                    context.Museums?.Attach(newExhibit.Museum);
+                    if (newExhibit.Museum != null && context.Museums != null)
+                        context.Museums.Attach(newExhibit.Museum);
+
                     context.Exhibits?.Add(newExhibit);
                     context.SaveChanges();
                     return newExhibit.Id;

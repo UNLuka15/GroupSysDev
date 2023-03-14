@@ -1,28 +1,65 @@
 ﻿using EntityAPI.Models;
 
-
 namespace EntityAPI.Repositories
 {
     public class EmailReportRepository : IRepository<EmailReport>
     {
-        public int? AddNew(EmailReport newObject)
+        public int? AddNew(EmailReport newEmailReport)
         {
-            throw new NotImplementedException();
+            using (var context = new Context())
+            {
+                if (context.EmailReports != null)
+                {
+                    context.EmailReports?.Add(newEmailReport);
+                    context.SaveChanges();
+                    return newEmailReport.Id;
+                }
+                else
+                    return null;
+            }
         }
 
         public List<EmailReport>? GetAll()
         {
-            throw new NotImplementedException();
+            using (var context = new Context())
+            {
+                if (context.EmailReports != null)
+                    return context.EmailReports.ToList();
+
+                return null;
+            }
         }
 
         public EmailReport? GetById(int id)
         {
-            throw new NotImplementedException();
+            using (var context = new Context())
+            {
+                if (context.EmailReports != null)
+                    return context.EmailReports.SingleOrDefault(e => e.Id == id);
+
+                return null;
+            }
         }
 
         public bool RemoveById(int id)
         {
-            throw new NotImplementedException();
+            using (var context = new Context())
+            {
+                if (context.EmailReports == null)
+                    return false;
+
+                var objectToRemove = context.EmailReports?.SingleOrDefault(e => e.Id == id);
+
+                if (objectToRemove != default)
+                {
+                    context.EmailReports?.Remove(objectToRemove);
+                    context.SaveChanges();
+
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

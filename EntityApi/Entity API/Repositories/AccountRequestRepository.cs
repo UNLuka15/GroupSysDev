@@ -2,40 +2,40 @@
 
 namespace EntityAPI.Repositories
 {
-    public class AccountRepository : IRepository<Account>
+    public class AccountRequestRepository : IRepository<AccountRequest>
     {
-        public int? AddNew(Account newAccount)
+        public int? AddNew(AccountRequest newAccountRequest)
         {
             using (var context = new Context())
             {
-                if (context.Accounts != null)
+                if (context.AccountRequests != null)
                 {
-                    context.Accounts?.Add(newAccount);
+                    context.AccountRequests?.Add(newAccountRequest);
                     context.SaveChanges();
-                    return newAccount.Id;
+                    return newAccountRequest.Id;
                 }
                 else
                     return null;
             }
         }
 
-        public List<Account>? GetAll()
+        public List<AccountRequest>? GetAll()
         {
             using (var context = new Context())
             {
-                if (context.Accounts != null)
-                    return context.Accounts.ToList();
+                if (context.AccountRequests != null)
+                    return context.AccountRequests.ToList();
 
                 return null;
             }
         }
 
-        public Account? GetById(int id)
+        public AccountRequest? GetById(int id)
         {
             using (var context = new Context())
             {
-                if (context.Accounts != null)
-                    return context.Accounts.SingleOrDefault(e => e.Id == id);
+                if (context.AccountRequests != null)
+                    return context.AccountRequests.SingleOrDefault(e => e.Id == id);
 
                 return null;
             }
@@ -45,14 +45,14 @@ namespace EntityAPI.Repositories
         {
             using (var context = new Context())
             {
-                if (context.Accounts == null)
+                if (context.AccountRequests == null)
                     return false;
 
-                var objectToRemove = context.Accounts?.SingleOrDefault(e => e.Id == id);
+                var objectToRemove = context.AccountRequests?.SingleOrDefault(e => e.Id == id);
 
                 if (objectToRemove != default)
                 {
-                    context.Accounts?.Remove(objectToRemove);
+                    context.AccountRequests?.Remove(objectToRemove);
                     context.SaveChanges();
 
                     return true;
