@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EntityAPI.Factories;
+using EntityAPI.Models;
+using EntityAPI.Repositories;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EntityAPI.Controllers
 {
-    public class AccountController
+    [Route("[controller]")]
+    public class AccountController : WriteBaseController<Account, AccountRequestModel>
     {
         // Account/Login
+        public override IModelFactory<Account, AccountRequestModel> _factory => new AccountFactory();
+        public override IRepository<Account> _repository => new AccountRepository();
     }
 }

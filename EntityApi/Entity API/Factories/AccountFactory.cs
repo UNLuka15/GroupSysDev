@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EntityAPI.Models;
 
 namespace EntityAPI.Factories
 {
-    internal class AccountFactory
+    public class AccountFactory : IModelFactory<Account, AccountRequestModel>
     {
+        public Account Create(AccountRequestModel requestModel)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

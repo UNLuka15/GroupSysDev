@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EntityAPI.Models;
 
 namespace EntityAPI.Factories
 {
-    internal class EmailReportFactory
+    public class EmailReportFactory : IModelFactory<EmailReport, EmailReportRequestModel>
     {
+        public EmailReport Create(EmailReportRequestModel requestModel)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

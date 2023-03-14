@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EntityAPI.Factories;
+using EntityAPI.Models;
+using EntityAPI.Repositories;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EntityAPI.Controllers
 {
-    public class ReportController
+    [Route("[controller]")]
+    public class ReportController : WriteBaseController<Report, ReportRequestModel>
     {
-        // Report
+        public override IModelFactory<Report, ReportRequestModel> _factory => new ReportFactory();
+
+        public override IRepository<Report> _repository => new ReportRepository();
     }
 }

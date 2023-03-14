@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EntityAPI.Factories;
+using EntityAPI.Models;
+using EntityAPI.Repositories;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EntityAPI.Controllers
 {
-    public class EmailReportContoller
+    [Route("[controller]")]
+    public class EmailReportContoller : WriteBaseController<EmailReport, EmailReportRequestModel>
     {
-        // EmailReport
+        public override IModelFactory<EmailReport, EmailReportRequestModel> _factory => new EmailReportFactory();
+
+        public override IRepository<EmailReport> _repository => new EmailReportRepository();
     }
 }
