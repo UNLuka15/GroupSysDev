@@ -6,7 +6,20 @@ namespace EntityAPI.Factories
     {
         public Report Create(ReportRequestModel requestModel)
         {
-            throw new NotImplementedException();
+            var report = new Report();
+            report.ByExhibit = requestModel.ByExhibit.Value;
+            report.ByFeedbackType = requestModel.ByFeedbackType.Value;
+            report.ByDate = requestModel.ByDate.Value;
+            report.ByKeywords = requestModel.ByKeywords.Value;
+
+            report.StartDate = DateTime.Parse(requestModel.StartDate);
+            report.EndDate = DateTime.Parse(requestModel.EndDate);
+
+            report.Keywords = requestModel.Keywords;
+            report.ExhibitCodeFilters = requestModel.ExhibitCodeFilters;
+            report.FeedbackTypeFilters = requestModel.FeedbackTypeFilters;
+
+            return report;
         }
     }
 }

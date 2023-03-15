@@ -41,6 +41,18 @@ namespace EntityAPI.Repositories
             }
         }
 
+        public Account? GetByAccountReference(string accountReference, string museumCode) 
+        {
+            // TODO: Add defensive programming to this method.
+            using (var context = new Context())
+            {
+                if (context.Accounts != null)
+                    return context.Accounts.SingleOrDefault(a => a.Reference == accountReference && a.Museum.Code == museumCode);
+
+                return null;
+            }
+        }
+
         public bool RemoveById(int id)
         {
             using (var context = new Context())

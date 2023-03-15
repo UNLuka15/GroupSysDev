@@ -20,6 +20,8 @@ namespace EntityAPI.Models
         public string? Password { get; set; }
 
         public string? Phone { get; set; }
+        
+        public string? EmailReportId { get; set; }
 
         [Required]
         public string? MuseumCode { get; set; }

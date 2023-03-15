@@ -24,7 +24,6 @@ namespace EntityAPI.Factories
             return newReview;
         }
 
-
         protected static Feedback MapFeedback(FeedbackRequestModel requestFeedback)
         {
             var newFeedback = new Feedback();
