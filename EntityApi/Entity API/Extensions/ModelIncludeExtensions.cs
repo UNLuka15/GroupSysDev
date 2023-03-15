@@ -30,5 +30,8 @@ namespace EntityAPI
 
         public static IQueryable<EmailReport> BuildEmailReport(this IQueryable<EmailReport> emailReportContext)
             => emailReportContext.Include("Report");
+
+        public static IQueryable<Feedback> BuildFeedback(this IQueryable<Feedback> feedbackContext)
+            => feedbackContext.Include("Lines");
     }
 }

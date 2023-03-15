@@ -9,7 +9,8 @@ namespace EntityAPI.Repositories
             using (var context = new Context())
             {
                 if (context.FeedbackSet != null)
-                    return context.FeedbackSet.ToList();
+                    return context.FeedbackSet.BuildFeedback()
+                                              .ToList();
 
                 return null;
             }
@@ -20,7 +21,8 @@ namespace EntityAPI.Repositories
             using (var context = new Context())
             {
                 if (context.FeedbackSet != null)
-                    return context.FeedbackSet.SingleOrDefault(e => e.Id == id);
+                    return context.FeedbackSet.BuildFeedback()
+                                              .SingleOrDefault(e => e.Id == id);
 
                 return null;
             }

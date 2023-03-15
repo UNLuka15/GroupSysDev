@@ -1,12 +1,14 @@
 ﻿using EntityAPI.Factories;
+using EntityAPI.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EntityAPI.Controllers
 {
     [ApiController]
-    public abstract class WriteBaseController<T, K> : ReadBaseController<T>
+    public abstract class WriteBaseController<T, K> : ControllerBase
     {
         public abstract IModelFactory<T, K> _factory { get; }
+        public abstract IRepository<T> _repository { get; }
 
         [HttpPost("Add")]
         public IActionResult AddItem([FromBody] K requestModel)
@@ -36,6 +38,27 @@ namespace EntityAPI.Controllers
 
                 return success ? Ok($"Object with id '{intId}' successfully removed.")
                                : NotFound($"Object with id '{intId} not found.'");
+            }
+
+            return BadRequest();
+        }
+
+        [HttpGet("All")]
+        public IActionResult GetList()
+        {
+            var objectList = _repository.GetAll();
+            return objectList != null ? Ok(objectList) : NoContent();
+        }
+
+        [HttpGet("Single")]
+        public IActionResult GetSingle(string id)
+        {
+            int intId;
+
+            if (Int32.TryParse(id, out intId))
+            {
+                var obj = _repository.GetById(intId);
+                return obj != null ? Ok(obj) : NotFound();
             }
 
             return BadRequest();
