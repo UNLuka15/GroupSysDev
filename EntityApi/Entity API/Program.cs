@@ -1,18 +1,10 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-// Still need to add the following models:
-// - Account
-// - Reports
-// - Logins
-// - Review Table
-// - Email Reports
+// Need to add update endpoints.
+// Need to add authorisation to controllers.
+// Need to add unit tests.
 
-// Could try and make a more standard repository. Could it accept a DbSet<T> instead of calling properties directly?
-// Need to add more interfaces in case we were to switch to another database integration at some point in the future.
-// Get Enums to show as their values instead of indices
+// Need to fix exhibit deletion conflict on experience when deleting a museum.
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
