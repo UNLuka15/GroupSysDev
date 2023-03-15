@@ -10,6 +10,9 @@ namespace EntityAPI.Repositories
             {
                 if (context.Accounts != null)
                 {
+                    context.Logins.Attach(newAccount.Security);
+                    context.Museums.Attach(newAccount.Museum);
+                    context.EmailReports.Attach(newAccount.EmailReport);
                     context.Accounts?.Add(newAccount);
                     context.SaveChanges();
                     return newAccount.Id;
@@ -24,7 +27,8 @@ namespace EntityAPI.Repositories
             using (var context = new Context())
             {
                 if (context.Accounts != null)
-                    return context.Accounts.ToList();
+                    return context.Accounts.BuildAccount()
+                                           .ToList();
 
                 return null;
             }
@@ -35,7 +39,8 @@ namespace EntityAPI.Repositories
             using (var context = new Context())
             {
                 if (context.Accounts != null)
-                    return context.Accounts.SingleOrDefault(e => e.Id == id);
+                    return context.Accounts.BuildAccount()
+                                           .SingleOrDefault(e => e.Id == id);
 
                 return null;
             }
@@ -47,7 +52,8 @@ namespace EntityAPI.Repositories
             using (var context = new Context())
             {
                 if (context.Accounts != null)
-                    return context.Accounts.SingleOrDefault(a => a.Reference == accountReference && a.Museum.Code == museumCode);
+                    return context.Accounts.BuildAccount()
+                                           .SingleOrDefault(a => a.Reference == accountReference && a.Museum.Code == museumCode);
 
                 return null;
             }

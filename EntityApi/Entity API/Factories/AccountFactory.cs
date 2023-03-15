@@ -7,6 +7,7 @@ namespace EntityAPI.Factories
     {
         public Account Create(AccountRequestModel requestModel)
         {
+            // TODO: Add a check to confirm that Account Reference isn't duplicated for that museum.
             var account = new Account();
             
             account.Reference = requestModel.Reference;

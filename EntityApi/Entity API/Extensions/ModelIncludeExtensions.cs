@@ -18,5 +18,17 @@ namespace EntityAPI
 
         public static IQueryable<Review> BuildReview(this IQueryable<Review> reviewContext)
             => reviewContext.Include("Content.Lines");
+
+        public static IQueryable<Account> BuildAccount(this IQueryable<Account> accountContext)
+            => accountContext.Include("Security")
+                             .Include("Museum")
+                             .Include("EmailReport.Report");
+
+        public static IQueryable<AccountRequest> BuildAccountRequest(this IQueryable<AccountRequest> accountRequestContext)
+            => accountRequestContext.Include("Account")
+                                    .Include("Museum");
+
+        public static IQueryable<EmailReport> BuildEmailReport(this IQueryable<EmailReport> emailReportContext)
+            => emailReportContext.Include("Report");
     }
 }

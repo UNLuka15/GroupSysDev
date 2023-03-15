@@ -10,6 +10,7 @@ namespace EntityAPI.Repositories
             {
                 if (context.EmailReports != null)
                 {
+                    context.Reports.Attach(newEmailReport.Report);
                     context.EmailReports?.Add(newEmailReport);
                     context.SaveChanges();
                     return newEmailReport.Id;
@@ -24,7 +25,8 @@ namespace EntityAPI.Repositories
             using (var context = new Context())
             {
                 if (context.EmailReports != null)
-                    return context.EmailReports.ToList();
+                    return context.EmailReports.BuildEmailReport()
+                                               .ToList();
 
                 return null;
             }
@@ -35,7 +37,8 @@ namespace EntityAPI.Repositories
             using (var context = new Context())
             {
                 if (context.EmailReports != null)
-                    return context.EmailReports.SingleOrDefault(e => e.Id == id);
+                    return context.EmailReports.BuildEmailReport()
+                                               .SingleOrDefault(e => e.Id == id);
 
                 return null;
             }
