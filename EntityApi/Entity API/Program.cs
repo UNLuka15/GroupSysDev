@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using EntityAPI;
 
 // Need to add update endpoints.
 // Need to add authorisation to controllers.
@@ -24,6 +25,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseBasicAuthMiddleware();
 
 app.UseHttpsRedirection();
 
