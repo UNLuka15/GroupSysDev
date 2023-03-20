@@ -1,4 +1,5 @@
 ﻿using EntityAPI.Models;
+using EntityAPI.Repositories;
 
 namespace EntityAPI.Factories
 {
@@ -10,7 +11,15 @@ namespace EntityAPI.Factories
 
             newReview.Provider = requestModel.Provider;
 
-            DateTime parsedDate;
+            var namedMuseum = new MuseumRepository().GetByName(requestModel.MuseumName);
+
+            if (namedMuseum != null)
+                newReview.Museum = namedMuseum;
+            else 
+                throw new Exception($"No museum with the name '{requestModel.MuseumName}' could be found.");
+
+
+                DateTime parsedDate;
             if (requestModel.Date != null)
             {
                 if (DateTime.TryParse(requestModel.Date, out parsedDate))

@@ -17,7 +17,8 @@ namespace EntityAPI
                                 .Include("Feedback.Lines");
 
         public static IQueryable<Review> BuildReview(this IQueryable<Review> reviewContext)
-            => reviewContext.Include("Content.Lines");
+            => reviewContext.Include("Content.Lines")
+                            .Include("Museum");
 
         public static IQueryable<Account> BuildAccount(this IQueryable<Account> accountContext)
             => accountContext.Include("Security")

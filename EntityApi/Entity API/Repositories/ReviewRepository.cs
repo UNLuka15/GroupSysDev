@@ -10,6 +10,7 @@ namespace EntityAPI.Repositories
             {
                 if (context.Reviews != null)
                 {
+                    context.Museums.Attach(newReview.Museum);
                     context.Reviews?.Add(newReview);
                     context.SaveChanges();
                     return newReview.Id;

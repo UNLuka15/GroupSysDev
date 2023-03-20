@@ -11,6 +11,9 @@ namespace EntityAPI.Models
         public string? Date { get; set; }
 
         [Required]
+        public string? MuseumName { get; set; }
+
+        [Required]
         public FeedbackRequestModel? Content { get; set; }
     }
 }
