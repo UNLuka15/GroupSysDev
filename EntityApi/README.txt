@@ -26,4 +26,7 @@ Once the solution is running, it will open a window to some swagger documentatio
 
 You can communicate with the API through here or Insomnia/Postman while it's running. You'll also be able to send requests through code when testing.
 
+Send the request using Basic Authentication: 
+- Username: MuseumDev
+- Password: GenericOrangeOpener6!
 

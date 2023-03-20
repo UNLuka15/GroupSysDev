@@ -7,13 +7,13 @@ namespace EntityAPI.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class CreateExtraTables : IMigrationMetadata
+    public sealed partial class PrepareModels : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateExtraTables));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(PrepareModels));
         
         string IMigrationMetadata.Id
         {
-            get { return "202303081517134_CreateExtraTables"; }
+            get { return "202303201115198_PrepareModels"; }
         }
         
         string IMigrationMetadata.Source
