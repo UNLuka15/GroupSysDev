@@ -30,25 +30,31 @@ namespace EntityAPI
                 {
                     if (authList.Length > 1 && authList[0] == expectedUsername && authList[1] == expectedPassword)
                     {
-                        await _next.Invoke(httpContext);
+                        try
+                        {
+                            await _next.Invoke(httpContext);
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new Exception(ex.Message);
+                        }
+                    }
+                    else
+                    {
+                        httpContext.Response.StatusCode = 401;
+                        return;
                     }
                 }
-                else 
+                else
                 {
                     throw new ArgumentNullException("Username or password unavailable");
                 }
             }
-
-            httpContext.Response.StatusCode = 401;
-            return;
-        }
-    }
-
-    public static class BasicAuthMiddlewareExtensions
-    {
-        public static IApplicationBuilder UseBasicAuthMiddleware(this IApplicationBuilder builder)
-        {
-            return builder.UseMiddleware<BasicAuthMiddleware>();
+            else 
+            {
+                httpContext.Response.StatusCode = 401;
+                return;
+            }
         }
     }
 }
