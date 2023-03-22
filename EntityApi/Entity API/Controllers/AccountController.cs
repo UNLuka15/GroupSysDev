@@ -8,8 +8,8 @@ namespace EntityAPI.Controllers
     [Route("[controller]")]
     public class AccountController : WriteBaseController<Account, AccountRequestModel>
     {
-        // Account/Login
-        public override IModelFactory<Account, AccountRequestModel> _factory => new AccountFactory();
-        public override IRepository<Account> _repository => new AccountRepository();
+        public AccountController(IModelFactory<Account, AccountRequestModel> factory, IRepository<Account> repository) : base(factory, repository)
+        {
+        }
     }
 }

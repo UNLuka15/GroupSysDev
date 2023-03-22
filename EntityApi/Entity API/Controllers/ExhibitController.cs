@@ -8,11 +8,9 @@ namespace EntityAPI.Controllers
     [Route("[controller]")]
     public class ExhibitController : WriteBaseController<Exhibit, ExhibitRequestModel>
     {
-        public override IModelFactory<Exhibit, ExhibitRequestModel> _factory => new ExhibitFactory();
-
-        public override IRepository<Exhibit> _repository => new ExhibitRepository();
-
-        // TODO: Add authorisation.
+        public ExhibitController(IModelFactory<Exhibit, ExhibitRequestModel> factory, IRepository<Exhibit> repository) : base(factory, repository)
+        {
+        }
 
         [HttpGet("ByMuseum")]
         public IActionResult GetExhibitByMuseumList(string museumCode)

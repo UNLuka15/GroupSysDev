@@ -6,7 +6,12 @@ namespace EntityAPI.Controllers
     [ApiController]
     public abstract class ReadBaseController<T> : ControllerBase
     {
-        public abstract IReadRepository<T> _repository { get; }
+        private readonly IRepository<T> _repository;
+
+        public ReadBaseController(IRepository<T> repository)
+        {
+            _repository = repository;
+        }
 
         [HttpGet("All")]
         public IActionResult GetList()

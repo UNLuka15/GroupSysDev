@@ -4,10 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EntityAPI.Controllers
 {
-    [ApiController]
     [Route("[controller]")]
     public class FeedbackController : ReadBaseController<Feedback>
     {
-        public override IReadRepository<Feedback> _repository => new FeedbackRepository();
+        public FeedbackController(IRepository<Feedback> repository) : base(repository)
+        {
+        }
     }
 }

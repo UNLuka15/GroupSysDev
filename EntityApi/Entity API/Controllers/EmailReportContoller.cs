@@ -8,7 +8,8 @@ namespace EntityAPI.Controllers
     [Route("[controller]")]
     public class EmailReportController : WriteBaseController<EmailReport, EmailReportRequestModel>
     {
-        public override IModelFactory<EmailReport, EmailReportRequestModel> _factory => new EmailReportFactory();
-        public override IRepository<EmailReport> _repository => new EmailReportRepository();
+        public EmailReportController(IModelFactory<EmailReport, EmailReportRequestModel> factory, IRepository<EmailReport> repository) : base(factory, repository)
+        {
+        }
     }
 }

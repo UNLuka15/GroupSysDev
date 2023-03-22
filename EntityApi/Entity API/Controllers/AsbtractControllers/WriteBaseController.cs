@@ -7,13 +7,18 @@ namespace EntityAPI.Controllers
     [ApiController]
     public abstract class WriteBaseController<T, K> : ControllerBase
     {
-        public abstract IModelFactory<T, K> _factory { get; }
-        public abstract IRepository<T> _repository { get; }
+        protected readonly IModelFactory<T, K> _factory;
+        protected readonly IRepository<T> _repository;
+
+        public WriteBaseController(IModelFactory<T, K> factory, IRepository<T> repository)
+        {
+            _factory = factory;
+            _repository = repository;
+        }
 
         [HttpPost("Add")]
         public IActionResult AddItem([FromBody] K requestModel)
         {
-            // Split up the translation into multiple smaller methods.
             try
             {
                 var newObject = _factory.Create(requestModel);
