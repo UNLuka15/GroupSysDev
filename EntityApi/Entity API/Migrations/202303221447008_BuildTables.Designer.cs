@@ -7,13 +7,13 @@ namespace EntityAPI.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class PrepareModels : IMigrationMetadata
+    public sealed partial class BuildTables : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(PrepareModels));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(BuildTables));
         
         string IMigrationMetadata.Id
         {
-            get { return "202303201115198_PrepareModels"; }
+            get { return "202303221447008_BuildTables"; }
         }
         
         string IMigrationMetadata.Source

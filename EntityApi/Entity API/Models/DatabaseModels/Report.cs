@@ -3,6 +3,8 @@
     public class Report
     {
         public int Id { get; set; }
+        public string? Name { get; set; }
+        public DateTime? GeneratedDate { get; set; }
         public bool ByExhibit { get; set; }
         public bool ByDate { get; set; }
         public bool ByFeedbackType { get; set; }

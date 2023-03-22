@@ -5,6 +5,8 @@ namespace EntityAPI.Models
     public class ReportRequestModel
     {
         [Required]
+        public string? Name { get; set; }
+        [Required]
         public bool? ByExhibit { get; set; }
         [Required]
         public bool? ByDate { get; set; }

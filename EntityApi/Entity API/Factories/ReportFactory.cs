@@ -7,6 +7,9 @@ namespace EntityAPI.Factories
         public Report Create(ReportRequestModel requestModel)
         {
             var report = new Report();
+
+            report.Name = requestModel.Name;
+            report.GeneratedDate = DateTime.Now;
             report.ByExhibit = requestModel.ByExhibit.Value;
             report.ByFeedbackType = requestModel.ByFeedbackType.Value;
             report.ByDate = requestModel.ByDate.Value;

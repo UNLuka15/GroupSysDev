@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class PrepareModels : DbMigration
+    public partial class BuildTables : DbMigration
     {
         public override void Up()
         {
@@ -69,6 +69,8 @@
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        GeneratedDate = c.DateTime(),
                         ByExhibit = c.Boolean(nullable: false),
                         ByDate = c.Boolean(nullable: false),
                         ByFeedbackType = c.Boolean(nullable: false),

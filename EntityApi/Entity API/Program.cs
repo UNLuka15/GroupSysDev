@@ -5,10 +5,11 @@ using EntityAPI.Factories;
 using EntityAPI.Models;
 
 // Need to add update endpoints.
-// Need to add unit tests.
+// Need to flesh out unit tests.
 
 // Need to fix exhibit deletion conflict on experience when deleting a museum.
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
 {
     options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
