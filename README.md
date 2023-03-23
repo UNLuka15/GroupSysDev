@@ -1,6 +1,6 @@
-# Museum Customer Experience Analysis Platform
+# Museum Customer Experience Analysis Platform - SQL Integration
 
-This project aims to transform the customer experience (CX) at museums by building a platform capable of analyzing customer feedback from various sources, such as Google Reviews.
+This project aims to transform the customer experience (CX) at museums by building a platform capable of analyzing customer feedback. This includes sources such as Google Reviews. This SQL integration will therefore create tables to store this data.
 
 ## Table of Contents
 
