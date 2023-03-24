@@ -10,7 +10,9 @@ namespace EntityAPI.Repositories
             {
                 if (context.Experiences != null)
                 {
-                    context.Exhibits.Attach(newExperience.Exhibit);
+                    if (context.Exhibits != null && newExperience.Exhibit != null)
+                        context.Exhibits.Attach(newExperience.Exhibit);
+
                     context.Experiences?.Add(newExperience);
                     context.SaveChanges();
                     return newExperience.Id;

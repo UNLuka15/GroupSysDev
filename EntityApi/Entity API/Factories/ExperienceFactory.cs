@@ -8,8 +8,10 @@ namespace EntityAPI.Factories
         public Experience Create(ExperienceRequestModel experienceRequest)
         {
             var newExperience = new Experience();
+            Exhibit? exhibit = null; 
 
-            var exhibit = new ExhibitRepository().GetByReference(experienceRequest.ExhibitReference, experienceRequest.MuseumCode);
+            if (!string.IsNullOrWhiteSpace(experienceRequest.ExhibitReference) && !string.IsNullOrWhiteSpace(experienceRequest.MuseumCode))
+                exhibit = new ExhibitRepository().GetByReference(experienceRequest.ExhibitReference, experienceRequest.MuseumCode);
             
             if (exhibit == null)
                 throw new Exception($"No Exhibit found with code '{experienceRequest.ExhibitReference}' for Museum with code '{experienceRequest.MuseumCode}'.");
@@ -17,7 +19,9 @@ namespace EntityAPI.Factories
             newExperience.Exhibit = exhibit;
             newExperience.UploadedBy = experienceRequest.UploadedBy;
             newExperience.DateEntered = DateTime.Now;
-            newExperience.Feedback = MapFeedback(experienceRequest.Feedback);
+
+            if (experienceRequest.Feedback != null)
+                newExperience.Feedback = MapFeedback(experienceRequest.Feedback);
 
             return newExperience;
         }
